@@ -89,7 +89,7 @@ public class RadioTest {
     public void shouldSetCurrentNonExistentMaxVolume (){
         Radio radio =new Radio();
         radio.setCurrentVolume(11);
-        int expected = 0;
+        int expected =11;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected,actual);
     }
@@ -114,7 +114,7 @@ public class RadioTest {
         Radio radio =new Radio();
         radio.setCurrentVolume(10);
         radio.increaseVolume();
-        int expected = 10;
+        int expected = 11;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -150,4 +150,77 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void increaseMaxVolumeC (){
+        Radio radio =new Radio();
+        radio.setCurrentVolume(99);
+        radio.increaseVolume();
+        int expected = 100;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void increaseMaxVolumeCD (){
+        Radio radio =new Radio();
+        radio.setCurrentVolume(100);
+        radio.increaseVolume();
+        int expected =0;
+        int actual = radio.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldSetCurrentNonExistentMinRadioD (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(-1);
+        int expected = 0;
+        int actual = radio.getCurrentRadio();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public void shouldSetCurrentNonExistentMinRadioDD (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(10);
+        int expected = 0;
+        int actual = radio.getCurrentRadio();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public void shouldSetCurrentNonExistentMinRadioDV (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(9);
+        int expected = 9;
+        int actual = radio.getCurrentRadio();
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void shouldSetCurrentNonExistentMinRadioDDX (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(101);
+        int expected = 0;
+        int actual = radio.getCurrentRadio();
+        Assertions.assertEquals(expected,actual);
+    }
+    @Test
+    public void prevStationRadiXo (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(9);
+        radio.prevStation();
+        int expected = 8;
+        int actual = radio.getCurrentRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void prevStationRadiXov (){
+        Radio radio =new Radio();
+        radio.setCurrentRadio(1);
+        radio.prevStation();
+        int expected = 0;
+        int actual = radio.getCurrentRadio();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
